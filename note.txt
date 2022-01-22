@@ -1,8 +1,3 @@
-Note :
-- proteger le retour de ses pthread fonctions
-- utiliser les fonctions pthreah_mutex_init et pthread_mutex_destroy
-- utiliser les fonctions pthread_mutex_lock et pthread_mutex_unlock
-
 PARSING :
 ./philo [nbr of philo] [time to die] [time to eat] [time to sleep]
 *[nbr each philo must atleast eat]
@@ -10,6 +5,13 @@ PARSING :
 - si arg != nbr
 - minimum 1 philo
 - si nbr > int
+
+___________________________________________________________________________
+
+Note :
+- proteger le retour de ses pthread fonctions
+- utiliser les fonctions pthreah_mutex_init et pthread_mutex_destroy
+- utiliser les fonctions pthread_mutex_lock et pthread_mutex_unlock
 
 structure des philos :
 - son numero

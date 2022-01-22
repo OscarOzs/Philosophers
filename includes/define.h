@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiozsert <wiozsert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:25:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/12 18:28:52 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/01/22 15:56:56 by wiozsert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ typedef int t_bool;
 # define FAILURE 1
 # define TRUE 1
 # define FALSE 0
+
+# define INTMAX 2147483647
 
 #endif

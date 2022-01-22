@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiozsert <wiozsert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:38:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/12 18:39:51 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/01/22 17:17:39 by wiozsert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define UTILS_H
 
 t_bool	ft_isdigit(int c);
+long	ft_atol(const char *str);
 
 #endif

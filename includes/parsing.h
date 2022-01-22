@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wiozsert <wiozsert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:24:00 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/12 18:43:18 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/01/21 17:59:16 by wiozsert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-t_bool	args_is_valid(int ac, char **av);
+t_bool	args_are_valid(int ac, char **av);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
+#    By: wiozsert <wiozsert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 17:36:35 by oozsertt          #+#    #+#              #
-#    Updated: 2022/01/10 14:20:53 by oozsertt         ###   ########.fr        #
+#    Updated: 2022/01/21 19:20:48 by wiozsert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,7 @@ SRCS =  $(foreach dir, $(SRCS_PATH), $(foreach file, $(wildcard $(dir)/*.c), $(n
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
-CFLAGS =	-pthread
-# -Wall -Werror -Wextra
+CFLAGS =	-pthread -Wall -Werror -Wextra
 BFLAGS =	-DBONUS=1
 NOBFLAGS =	-DBONUS=0
 
