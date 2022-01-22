@@ -12,6 +12,7 @@ Note :
 - proteger le retour de ses pthread fonctions
 - utiliser les fonctions pthreah_mutex_init et pthread_mutex_destroy
 - utiliser les fonctions pthread_mutex_lock et pthread_mutex_unlock
+- exit function interdite
 
 structure des philos :
 - son numero
