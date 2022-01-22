@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wiozsert <wiozsert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 20:24:46 by user42            #+#    #+#             */
-/*   Updated: 2022/01/22 17:53:24 by wiozsert         ###   ########.fr       */
+/*   Created: 2022/01/22 17:59:06 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/22 18:00:22 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ int main(int ac, char **av)
 {
 	if (args_are_valid(ac, av) == FALSE)
 		return (FAILURE);
-	
 }
