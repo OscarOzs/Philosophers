@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   seconds.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:38:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/25 18:54:19 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/01/25 19:09:20 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/25 19:19:00 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef SECONDS_H
+# define SECONDS_H
 
-t_bool	ft_isdigit(int c);
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
+void	get_seconds(t_time *time, struct timeval start);
 
 #endif

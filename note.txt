@@ -8,6 +8,8 @@ PARSING :
 
 ___________________________________________________________________________
 
+
+
 Note :
 - proteger le retour de ses pthread fonctions
 - utiliser les fonctions pthreah_mutex_init et pthread_mutex_destroy
@@ -27,16 +29,21 @@ GENERAL :
 thread :
 - pthread_t *variable*
 - pthread_create(adresse de struct, NULL, adresse de fctn, NULL)
-- pthread_join(struct, NULL)
+- pthread_join(struct, NULL/*pointeur*)
+- si un philo meurt : pthread_exit(*valeur de retour*)
 
 mutex :
 - check si un des philo est mort
 - mutex sur fourchette
 
+gettimeofday :
+- struct timeval *variable*
+- gettimeofday(adresse de struct, NULL)
+
 fctn pour print :
 - ne pas print les ms si == 0
 
-gettime : dans ft_routine
+gettime :
 - gettimeofday avec start
 - *algo principale*
 - gettimeofday avec end

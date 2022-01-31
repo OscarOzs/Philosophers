@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   one_philosopher_case.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:38:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/25 18:54:19 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/01/26 15:20:17 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/26 16:01:03 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "philosopher.h"
 
-t_bool	ft_isdigit(int c);
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
-
-#endif
+void	one_philosopher_case(int time_to_die)
+{
+	printf("0 1 has taken a fork\n");
+	usleep(time_to_die * 1000);
+	printf("%d 1 died\n", time_to_die);
+}

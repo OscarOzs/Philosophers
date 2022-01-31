@@ -1,0 +1,35 @@
+pthread_mutex_t mutex;
+
+void	*eating(void *isfork)
+{
+	int	*fork;
+
+	fork = (int*)isfork;
+	pthread_mutex_lock(&mutex);
+	fork[0] = 1;
+	printf("philo is eating\n");
+	sleep(1);
+	pthread_mutex_unlock(&mutex);
+	// pthread_exit(NULL);
+}
+
+int main(int ac, char **av)
+{
+	if (args_are_valid(ac, av) == FALSE)
+		return (FAILURE);
+
+	pthread_t philo1;
+	pthread_t philo2;
+	int	*isfork;
+
+	isfork[0] = 2;
+	
+	pthread_mutex_init(&mutex, NULL);
+	pthread_create(&philo1, NULL, eating((void*)isfork), NULL);
+	pthread_create(&philo2, NULL, eating((void*)isfork), NULL);
+
+	pthread_join(philo1, (void*)isfork);
+	pthread_join(philo2, (void*)isfork);
+	pthread_mutex_destroy(&mutex);
+	return (0);
+}

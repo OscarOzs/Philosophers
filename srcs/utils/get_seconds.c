@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   get_seconds.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:38:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/25 18:54:19 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/01/25 18:59:04 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/26 15:04:23 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "philosopher.h"
 
-t_bool	ft_isdigit(int c);
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
+void	get_seconds(t_time *time, struct timeval start)
+{
+	struct timeval	current_time;
 
-#endif
+	gettimeofday(&current_time, NULL);
+	time->seconds = current_time.tv_sec - start.tv_sec;
+}

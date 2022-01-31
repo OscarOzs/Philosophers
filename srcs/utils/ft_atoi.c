@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/22 17:59:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/26 16:13:18 by oozsertt         ###   ########.fr       */
+/*   Created: 2020/09/14 12:54:33 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/25 18:54:07 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-int main(int ac, char **av)
+int	ft_atoi(const char *str)
 {
-	struct timeval	start;
+	int	res;
+	int	sign;
+	int	i;
 
-	if (args_are_valid(ac, av) == FALSE)
-		return (FAILURE);
-	gettimeofday(&start, NULL);
-	if (ft_atoi(av[1]) == 1)
-		one_philosopher_case(ft_atoi(av[2]));
-	else if (ft_atoi(av[1]) == 2)
-		two_philosophers_case(ac, av, &start);
-
-	return (0);
+	res = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

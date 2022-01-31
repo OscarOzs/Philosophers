@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   struct_time.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 18:38:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/25 18:54:19 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/01/25 18:55:57 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/25 19:17:43 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef STRUCT_SECONDS_H
+# define STRUCT_SECONDS_H
 
-t_bool	ft_isdigit(int c);
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
+typedef struct	s_time
+{
+	long	seconds;
+	long	milliseconds;
+}				t_time;
 
 #endif
