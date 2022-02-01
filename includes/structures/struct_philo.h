@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_philo.h                                        :+:      :+:    :+:   */
+/*   struct_philo.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 15:24:09 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/31 18:23:38 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/01/31 16:12:28 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/31 18:17:41 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ONE_PHILO_H
-# define ONE_PHILO_H
+#ifndef STRUCT_PHILO_H
+# define STRUCT_PHILO_H
 
-void	*one_philosopher_case(int time_to_die);
+typedef struct s_philo
+{
+	pthread_t	philo;
+	int			id;
+	t_bool		has_fork;
+	t_bool		has_eaten;
+	struct s_philo		*next;
+	struct s_philo		*previous;
+	t_data		*data;
+}				t_philo;
 
 #endif

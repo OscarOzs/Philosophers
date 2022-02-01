@@ -5,9 +5,7 @@ PARSING :
 - si arg != nbr
 - minimum 1 philo
 - si nbr > int
-
 ___________________________________________________________________________
-
 
 
 Note :
@@ -16,16 +14,6 @@ Note :
 - utiliser les fonctions pthread_mutex_lock et pthread_mutex_unlock
 - exit function interdite
 
-structure des philos :
-- son numero
-- boolean de la fourchette
-- next (prochain philo)
-- previous (precedent philo)
-
-GENERAL :
-- gerer cas de 2 philo
-- gerer cas de 1 philo (attend x mls puis meurt)
-
 thread :
 - pthread_t *variable*
 - pthread_create(adresse de struct, NULL, adresse de fctn, NULL)
@@ -33,25 +21,24 @@ thread :
 - si un philo meurt : pthread_exit(*valeur de retour*)
 
 mutex :
-- check si un des philo est mort
-- mutex sur fourchette
+- affichage
+- is_alive
+- si on tous manger
+- chaque fork
 
 gettimeofday :
 - struct timeval *variable*
 - gettimeofday(adresse de struct, NULL)
 
-fctn pour print :
-- ne pas print les ms si == 0
-
-gettime :
-- gettimeofday avec start
-- *algo principale*
-- gettimeofday avec end
-- if start.tv_sec == end.tv_sec : print seulement ms (si different de 0)
-- else : print seconde + ms (si different de 0)
-
 ROUTINE :
-- routine gettime
-- preparation des threads pour chaque philo
-- main algo
-- fin de routine gettime
+
+
+
+CONDITION POUR CHAQUE ACTIONS :
+eat :
+	- 2 fork
+	- mutex
+think :
+	- has eaten
+sleep :
+	- else

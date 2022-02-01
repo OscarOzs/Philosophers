@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 18:14:31 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/26 16:26:25 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:17:56 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # include "utils.h"
 # include "parsing.h"
 # include "struct_seconds.h"
+# include "struct_data.h"
+# include "struct_philo.h"
+# include "struct_core.h"
+# include "malloc.h"
+# include "init.h"
 # include "seconds.h"
 # include "one_philo.h"
 # include "two_philo.h"

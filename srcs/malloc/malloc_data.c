@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   two_philosophers.c                                 :+:      :+:    :+:   */
+/*   malloc_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 16:03:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/31 17:38:45 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/01/31 17:40:54 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/01/31 18:19:24 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-static void	*routine(void *node)
+void	*malloc_data(t_data *data)
 {
-	
-	return (NULL);
-}
-
-void	*two_philosophers_case(int ac, char **av, struct timeval *start)
-{
-	t_core	*core;
-
-	if (malloc_core(core) == NULL)
+	data = (t_data *)malloc(sizeof(t_data));
+	if (data == NULL)
 		return (NULL);
-	init_struct(ac, av, start, core);
-	// pthread_mutex_init(&mutex, NULL);
-	// pthread_create(&philo1, NULL, routine, NULL);
-	// pthread_create(&philo2, NULL, routine, NULL);
-	
-	// pthread_join(philo1, NULL);
-	// pthread_join(philo2, NULL);
-	// pthread_mutex_destroy(&mutex);
+	return (data);
 }
