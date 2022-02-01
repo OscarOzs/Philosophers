@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:03:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/01 15:04:11 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:26:00 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	*routine(void *node)
 t_core	*two_philosophers_case(int ac, char **av, struct timeval *start,
 t_core *core)
 {
-	if (malloc_core(core) == NULL)
+	core = malloc_core(core);
+	if (core == NULL)
 		return (NULL);
 	init_struct(ac, av, start, core);
 	// pthread_mutex_init(&mutex, NULL);

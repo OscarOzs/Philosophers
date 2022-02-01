@@ -6,15 +6,16 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/31 18:21:16 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/01 16:32:33 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-static void	*init_data(int ac, char **av, t_data *data)
+t_data	*init_data(int ac, char **av, t_data *data)
 {
-	if (malloc_data(data) == NULL)
+	data = malloc_data(data);
+	if (data == NULL)
 		return (NULL);
 	data->nbr_of_philo = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
@@ -56,7 +57,8 @@ static void	*init_data(int ac, char **av, t_data *data)
 
 void	*init_struct(int ac, char **av, struct timeval *start, t_core *core)
 {
-	if (init_data(ac, av, core->data) == NULL)
+	core->data = init_data(ac, av, core->data);
+	if (core->data == NULL)
 		return (NULL);
 	// if (init_cll(core->data->nbr_of_philo, core->cll) == NULL)
 	// 	return (NULL);
