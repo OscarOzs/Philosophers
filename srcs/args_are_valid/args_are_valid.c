@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:28:20 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/22 17:59:20 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/01 15:00:04 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,10 @@ t_bool	args_are_valid(int ac, char **av)
 		return (FALSE);
 	if (args_are_int_range(ac, av) == FALSE)
 		return (FALSE);
+	if (ac == 6)
+	{
+		if (av[5][0] == '0')
+			return (FALSE);
+	}
 	return (TRUE);
 }
