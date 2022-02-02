@@ -22,9 +22,8 @@ thread :
 
 mutex :
 - affichage
-- is_alive
-- si on tous manger
 - chaque fork
+- last_time_eating (gettimeofday)
 
 gettimeofday :
 - struct timeval *variable*

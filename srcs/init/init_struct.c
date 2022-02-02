@@ -6,13 +6,13 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/01 16:32:33 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:52:48 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-t_data	*init_data(int ac, char **av, t_data *data)
+static t_data	*init_data(int ac, char **av, t_data *data)
 {
 	data = malloc_data(data);
 	if (data == NULL)
@@ -28,39 +28,30 @@ t_data	*init_data(int ac, char **av, t_data *data)
 	return (data);
 }
 
-// static void	*init_cll(int nbr_of_philo, t_philo *cll)
-// {
-// 	int		i;
-// 	t_philo	*ptr;
-// 	t_philo	*tmp;
+t_philo	*init_cll(int nbr_of_philo, t_philo *cll)
+{
+	t_philo	*first_node;
 
-// 	cll = (t_philo *)malloc(sizeof(t_philo));
-// 	if (cll == NULL)
-// 		return (NULL);
-// 	ptr = cll;
-// 	cll = cll->next;
-// 	i = 1;
-// 	while (i < nbr_of_philo)
-// 	{
-// 		cll = (t_philo *)malloc(sizeof(t_philo));
-// 		if (cll == NULL)
-// 			return (NULL);
-// 		if (i == 1)
-// 			cll->previous = ptr;
-// 		else
-// 			cll->previous = tmp;
-// 		tmp = cll;
-// 		cll = cll->next;
-// 		i++;
-// 	}
-// }
+	cll = (t_philo *)malloc(sizeof(t_philo) * 1);
+	if (cll == NULL)
+		return (NULL);
+	first_node = cll;
+	first_node->id = 1;
+	cll = cll->next;
+	cll = malloc_nodes(cll, first_node, nbr_of_philo);
+	if (cll == NULL)
+		return (NULL);
+	cll->next = first_node;
+	return (first_node);
+}
 
-void	*init_struct(int ac, char **av, struct timeval *start, t_core *core)
+t_core	*init_struct(int ac, char **av, struct timeval *start, t_core *core)
 {
 	core->data = init_data(ac, av, core->data);
 	if (core->data == NULL)
 		return (NULL);
-	// if (init_cll(core->data->nbr_of_philo, core->cll) == NULL)
-	// 	return (NULL);
+	core->cll = init_cll(core->data->nbr_of_philo, core->cll);
+	if (core->cll == NULL)
+		return (NULL);
 	return (core);
 }
