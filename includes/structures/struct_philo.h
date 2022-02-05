@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:12:28 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/31 18:17:41 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:22:56 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 typedef struct s_philo
 {
-	pthread_t	philo;
-	int			id;
-	t_bool		has_fork;
-	t_bool		has_eaten;
+	pthread_t			philo;
+	int					id;
+	pthread_mutex_t		has_fork;
+	t_bool				has_eaten;
 	struct s_philo		*next;
 	struct s_philo		*previous;
-	t_data		*data;
+	t_data				*data;
 }				t_philo;
 
 #endif

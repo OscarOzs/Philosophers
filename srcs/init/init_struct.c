@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/05 17:48:52 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/05 18:23:39 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
 	while (i < nbr_of_philo)
 	{
 		nodes->id = i + 1;
-		nodes->has_fork = 1;
 		nodes->has_eaten = 0;
 		nodes->data = data;
 		nodes = nodes->next;
