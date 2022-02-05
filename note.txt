@@ -32,7 +32,6 @@ gettimeofday :
 ROUTINE :
 
 
-
 CONDITION POUR CHAQUE ACTIONS :
 eat :
 	- 2 fork

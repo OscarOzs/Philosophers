@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:22:24 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/31 16:24:26 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/05 15:28:19 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_data
 	int	time_to_eat;
 	int	time_to_sleep;
 	int	max_eat;
+	pthread_mutex_t	mutex;
 }				t_data;
 
 

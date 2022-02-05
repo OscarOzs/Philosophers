@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/02 17:52:48 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/05 17:48:52 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@ t_philo	*init_cll(int nbr_of_philo, t_philo *cll)
 	return (first_node);
 }
 
+static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
+{
+	int		i;
+	t_philo	*tmp;
+
+	i = 0;
+	tmp = nodes;
+	while (i < nbr_of_philo)
+	{
+		nodes->id = i + 1;
+		nodes->has_fork = 1;
+		nodes->has_eaten = 0;
+		nodes->data = data;
+		nodes = nodes->next;
+		i++;
+	}
+	nodes = tmp;
+}
+
 t_core	*init_struct(int ac, char **av, struct timeval *start, t_core *core)
 {
 	core->data = init_data(ac, av, core->data);
@@ -53,5 +72,6 @@ t_core	*init_struct(int ac, char **av, struct timeval *start, t_core *core)
 	core->cll = init_cll(core->data->nbr_of_philo, core->cll);
 	if (core->cll == NULL)
 		return (NULL);
+	init_nodes(ft_atoi(av[1]), core->cll, core->data);
 	return (core);
 }
