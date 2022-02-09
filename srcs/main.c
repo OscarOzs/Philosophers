@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:59:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 15:55:16 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:44:23 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,13 @@ int main(int ac, char **av)
 		core = two_philosophers_case(ac, av, core);
 		if (core == NULL)
 			return (1);
-		free_core(core);
 	}
+	// else
+	// {
+	// 	core = main_algo(ac, av, core);
+	// 	if (core == NULL)
+	// 		return (1);
+	// }
+	free_core(core);
 	return (0);
 }

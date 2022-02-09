@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 18:14:31 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 15:59:24 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/09 20:24:49 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@
 # include "print_functions.h"
 # include "one_philo.h"
 # include "two_philo.h"
-
+# include "main_algo.h"
 
 #endif

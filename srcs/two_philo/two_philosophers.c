@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:03:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 19:38:12 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/09 23:24:37 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ static void	*routine(void *node)
 	t_philo	*philo;
 
 	philo = (t_philo *)node;
+	if (philo->data->time_to_eat >= philo->data->time_to_die)
+		philo_dies_while_eating(philo);
+	else if (philo->data->time_to_sleep >= philo->data->time_to_die)
+		philo_dies_while_sleeping(philo);
 	while (is_philo_dead(philo) == FALSE && max_eat_reached(philo) == FALSE)
 	{
 		if (philo->data->one_philo_died == TRUE)
@@ -62,14 +66,14 @@ static void	*routine(void *node)
 	return (node);
 }
 
-static void	thread_call_routine(char **av, t_philo *cll)
+static void	thread_call_routine(t_philo *cll)
 {
 	t_philo	*tmp;
 	int		i;
 
 	i = 0;
 	tmp = cll;
-	while (i < ft_atoi(av[1]))
+	while (i < cll->data->nbr_of_philo)
 	{
 		pthread_create(&cll->philo, NULL, &routine, cll);
 		cll = cll->next;
@@ -77,7 +81,7 @@ static void	thread_call_routine(char **av, t_philo *cll)
 	}
 	i = 0;
 	cll = tmp;
-	while (i < ft_atoi(av[1]))
+	while (i < cll->data->nbr_of_philo)
 	{
 		pthread_join(cll->philo, NULL);
 		cll = cll->next;
@@ -93,6 +97,6 @@ t_core	*two_philosophers_case(int ac, char **av, t_core *core)
 	core = init_struct(ac, av, core);
 	if (core == NULL)
 		return (NULL);
-	thread_call_routine(av, core->cll);
+	thread_call_routine(core->cll);
 	return (core);
 }

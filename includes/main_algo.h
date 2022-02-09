@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_philo_thinking.c                             :+:      :+:    :+:   */
+/*   main_algo.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 17:29:51 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 23:26:41 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/02/09 19:43:38 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/02/09 20:31:04 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosopher.h"
+#ifndef MAIN_ALGO_H
+# define MAIN_ALGO_H
 
-void	print_philo_thinking(t_philo *philo, long current_time)
-{
-	if (philo->data->one_philo_died)
-	{
-		pthread_mutex_lock(&philo->data->print_mutex);
-		printf("\033[0;37m%ld %d is thinking\n", current_time, philo->id);
-		pthread_mutex_unlock(&philo->data->print_mutex);
-	}
-}
+t_core	*main_algo(int ac, char **av, t_core *core);
+
+#endif
