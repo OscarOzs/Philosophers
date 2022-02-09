@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   two_philo.h                                        :+:      :+:    :+:   */
+/*   print_philo_sleeping.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 16:25:51 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 14:37:06 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/02/08 17:26:22 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/02/09 19:36:44 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TWO_PHILO_H
-# define TWO_PHILO_H
+#include "philosopher.h"
 
-t_core	*two_philosophers_case(int ac, char **av, t_core *core);
-
-#endif
+void	print_philo_sleeping(t_philo *philo, long current_time)
+{
+	pthread_mutex_lock(&philo->data->print_mutex);
+	printf("\033[0;34m%ld %d is sleeping\n", current_time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
+}

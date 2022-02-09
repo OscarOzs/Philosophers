@@ -40,3 +40,8 @@ think :
 	- has eaten
 sleep :
 	- else
+
+note pour demain :
+- faire decalage de 1 ms pour eviter de prendre toute fork en meme temps
+- faire thread avec fontion is_philo_dead
+- faire fonction max_eat_reach

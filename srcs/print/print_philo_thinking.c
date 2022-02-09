@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_time.h                                      :+:      :+:    :+:   */
+/*   print_philo_thinking.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/25 18:55:57 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/25 19:17:43 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/02/08 17:29:51 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/02/09 19:35:34 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_SECONDS_H
-# define STRUCT_SECONDS_H
+#include "philosopher.h"
 
-typedef struct	s_time
+void	print_philo_thinking(t_philo *philo, long current_time)
 {
-	long	seconds;
-	long	milliseconds;
-}				t_time;
-
-#endif
+	pthread_mutex_lock(&philo->data->print_mutex);
+	printf("\033[0;37m%ld %d is thinking\n", current_time, philo->id);
+	pthread_mutex_unlock(&philo->data->print_mutex);
+}

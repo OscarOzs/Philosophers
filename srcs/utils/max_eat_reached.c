@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   two_philo.h                                        :+:      :+:    :+:   */
+/*   max_eat_reached.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 16:25:51 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 14:37:06 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/02/09 15:58:43 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/02/09 15:58:55 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TWO_PHILO_H
-# define TWO_PHILO_H
+#include "philosopher.h"
 
-t_core	*two_philosophers_case(int ac, char **av, t_core *core);
-
-#endif
+t_bool	max_eat_reached(t_philo *philo)
+{
+	if (philo->data->max_eat != -1)
+	{
+		if (philo->nbr_eat == philo->data->max_eat)
+			return (TRUE);
+		else
+			return (FALSE);
+	}
+	else
+		return (FALSE);
+}
