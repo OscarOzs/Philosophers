@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:03:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 23:24:37 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/10 03:41:57 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,17 @@ static void	eating_function(t_philo *philo)
 	pthread_mutex_lock(&philo->next->fork);
 	current_time = get_time(philo->data->old_time);
 	philo->last_time_eat = get_time(philo->data->old_time);
-	if (philo->data->one_philo_died == FALSE)
-		print_philo_eating(philo, current_time);
-	philo->has_eaten = 1;
-	if (philo->data->max_eat != -1)
-		philo->nbr_eat++;
-	usleep(philo->data->time_to_eat * 1000);
+	if (philo->data->time_to_eat >= philo->data->time_to_die)
+		philo_dies_while_eating(philo);
+	else
+	{
+		if (philo->data->one_philo_died == FALSE)
+			print_philo_eating(philo, current_time);
+		philo->has_eaten = 1;
+		if (philo->data->max_eat != -1)
+			philo->nbr_eat++;
+		usleep(philo->data->time_to_eat * 1000);
+	}
 	pthread_mutex_unlock(&philo->fork);
 	pthread_mutex_unlock(&philo->next->fork);
 }
@@ -37,13 +42,18 @@ static void	sleep_and_think_function(t_philo *philo)
 	if (philo->has_eaten == 1)
 	{
 		current_time = get_time(philo->data->old_time);
-		philo->last_time_sleep = get_time(philo->data->old_time);
-		usleep(philo->data->time_to_sleep * 1000);
-		if (philo->data->one_philo_died == FALSE)
-			print_philo_sleeping(philo, current_time);
-		current_time = get_time(philo->data->old_time);
-		if (philo->data->one_philo_died == FALSE)
-			print_philo_thinking(philo, current_time);
+		if (philo->data->time_to_sleep >= philo->data->time_to_die)
+			philo_dies_while_sleeping(philo);
+		else
+		{
+			philo->last_time_sleep = get_time(philo->data->old_time);
+			usleep(philo->data->time_to_sleep * 1000);
+			if (philo->data->one_philo_died == FALSE)
+				print_philo_sleeping(philo, current_time);
+			current_time = get_time(philo->data->old_time);
+			if (philo->data->one_philo_died == FALSE)
+				print_philo_thinking(philo, current_time);
+		}
 	}
 }
 
@@ -52,10 +62,6 @@ static void	*routine(void *node)
 	t_philo	*philo;
 
 	philo = (t_philo *)node;
-	if (philo->data->time_to_eat >= philo->data->time_to_die)
-		philo_dies_while_eating(philo);
-	else if (philo->data->time_to_sleep >= philo->data->time_to_die)
-		philo_dies_while_sleeping(philo);
 	while (is_philo_dead(philo) == FALSE && max_eat_reached(philo) == FALSE)
 	{
 		if (philo->data->one_philo_died == TRUE)
