@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 23:09:33 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/10 03:41:39 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:13:42 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	philo_dies_while_sleeping(t_philo *philo)
 
 	current_time = get_time(philo->data->old_time);
 	print_philo_sleeping(philo, current_time);
-	usleep((philo->data->time_to_die - current_time) * 1000);
+	usleep((philo->data->time_to_sleep - philo->data->time_to_die) * 1000);
 	current_time = get_time(philo->data->old_time);
 	print_philo_died(philo, current_time);
 	philo->data->one_philo_died = TRUE;

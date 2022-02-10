@@ -30,5 +30,4 @@ gettimeofday :
 - gettimeofday(adresse de struct, NULL)
 
 note pour demain :
-pas trop fatigue fdp ? 
 - ./philo 2 180 150 200 7 (gerer ce cas la)

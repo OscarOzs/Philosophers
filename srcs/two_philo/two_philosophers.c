@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:03:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/10 03:41:57 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/10 16:35:01 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	eating_function(t_philo *philo)
 
 	pthread_mutex_lock(&philo->fork);
 	pthread_mutex_lock(&philo->next->fork);
+	if (philo->data->one_philo_died == TRUE)
+		return ;
 	current_time = get_time(philo->data->old_time);
 	philo->last_time_eat = get_time(philo->data->old_time);
 	if (philo->data->time_to_eat >= philo->data->time_to_die)
@@ -39,10 +41,11 @@ static void	sleep_and_think_function(t_philo *philo)
 {
 	long	current_time;
 
-	if (philo->has_eaten == 1)
+	if (philo->has_eaten == 1 && philo->data->one_philo_died == FALSE)
 	{
 		current_time = get_time(philo->data->old_time);
-		if (philo->data->time_to_sleep >= philo->data->time_to_die)
+		if ((philo->data->time_to_eat + philo->data->time_to_sleep)
+			>= philo->data->time_to_die)
 			philo_dies_while_sleeping(philo);
 		else
 		{
