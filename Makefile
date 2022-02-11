@@ -6,7 +6,7 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 17:36:35 by oozsertt          #+#    #+#              #
-#    Updated: 2022/02/09 14:35:10 by oozsertt         ###   ########.fr        #
+#    Updated: 2022/02/11 18:58:38 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ SRCS =  $(foreach dir, $(SRCS_PATH), $(foreach file, $(wildcard $(dir)/*.c), $(n
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
-CFLAGS =	-pthread -Wall -Werror -Wextra -g3
+CFLAGS = -pthread -Wall -Werror -Wextra\
+# -fsanitize=thread
+
 BFLAGS =	-DBONUS=1
 NOBFLAGS =	-DBONUS=0
 

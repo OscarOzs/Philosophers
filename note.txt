@@ -1,33 +1,13 @@
+
+
+
+
 PARSING :
 ./philo [nbr of philo] [time to die] [time to eat] [time to sleep]
 *[nbr each philo must atleast eat]
-- si nbr d'arg != 5 || 6
-- si arg != nbr
-- minimum 1 philo
-- si nbr > int
 ___________________________________________________________________________
-
 
 Note :
 - proteger le retour de ses pthread fonctions
-- utiliser les fonctions pthreah_mutex_init et pthread_mutex_destroy
-- utiliser les fonctions pthread_mutex_lock et pthread_mutex_unlock
-- exit function interdite
-
-thread :
-- pthread_t *variable*
-- pthread_create(adresse de struct, NULL, adresse de fctn, NULL)
-- pthread_join(struct, NULL/*pointeur*)
-- si un philo meurt : pthread_exit(*valeur de retour*)
-
-mutex :
-- affichage
-- chaque fork
-- last_time_eating (gettimeofday)
-
-gettimeofday :
-- struct timeval *variable*
-- gettimeofday(adresse de struct, NULL)
-
-note pour demain :
-- ./philo 2 180 150 200 7 (gerer ce cas la)
+- mettre .c dans makefile
+- supprimer cette note du repo
