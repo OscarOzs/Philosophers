@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:38:58 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 23:14:43 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/13 17:13:59 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_bool	is_philo_dead(t_philo *philo);
 t_bool	max_eat_reached(t_philo *philo);
 void	philo_dies_while_eating(t_philo *philo);
 void	philo_dies_while_sleeping(t_philo *philo);
+void	my_usleep(int time_to, long current_time, t_philo *philo);
 
 #endif

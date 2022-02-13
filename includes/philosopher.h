@@ -6,14 +6,12 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 18:14:31 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/11 13:25:39 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/12 14:24:49 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHER_H
 # define PHILOSOPHER_H
-
-# define ICI printf("ICI\n");
 
 # include <stdio.h>
 # include <pthread.h>

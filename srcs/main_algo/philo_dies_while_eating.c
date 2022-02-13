@@ -6,11 +6,32 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 22:53:24 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/11 18:43:20 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/13 20:51:27 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
+
+static void	philo_has_no_time_to_eat(t_philo *philo, long current_time)
+{
+	print_philo_eating(philo, current_time);
+	my_usleep(philo->data->time_to_die, current_time, philo);
+	current_time = get_time(philo->data->old_time);
+	print_philo_died(philo, current_time);
+}
+
+static void	second_philo_has_no_time_to_eat(t_philo *philo, long current_time)
+{
+	print_philo_eating(philo, current_time);
+	print_philo_eating(philo->previous, current_time);
+	print_philo_eating(philo->previous->previous, current_time);
+	print_philo_eating(philo->previous->previous, current_time);
+
+	my_usleep((philo->data->time_to_die - philo->data->time_to_die),
+	current_time, philo->previous);
+	current_time = get_time(philo->data->old_time);
+	print_philo_died(philo->previous, current_time);
+}
 
 void	philo_dies_while_eating(t_philo *philo)
 {
@@ -18,8 +39,8 @@ void	philo_dies_while_eating(t_philo *philo)
 
 	philo->data->one_philo_died = TRUE;
 	current_time = get_time(philo->data->old_time);
-	print_philo_eating(philo, current_time);
-	usleep(philo->data->time_to_die * 1000);
-	current_time = get_time(philo->data->old_time);
-	print_philo_died(philo, current_time);
+	if (philo->data->time_to_eat >= philo->data->time_to_die)
+		philo_has_no_time_to_eat(philo, current_time);
+	else
+		second_philo_has_no_time_to_eat(philo, current_time);
 }

@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/09 15:35:29 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/13 16:30:27 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_data	*init_data(int ac, char **av, t_data *data)
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
+	data->current_time = 0;
 	data->one_philo_died = FALSE;
 	if (ac == 6)
 		data->max_eat = ft_atoi(av[5]);
@@ -51,6 +52,7 @@ static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
 {
 	int		i;
 	t_philo	*tmp;
+	t_philo	*last_node;
 
 	i = 0;
 	tmp = nodes;
@@ -62,7 +64,9 @@ static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
 		nodes->nbr_eat = 0;
 		nodes->last_time_eat = 0;
 		nodes->data = data;
+		last_node = nodes;
 		nodes = nodes->next;
+		nodes->previous = last_node;
 		i++;
 	}
 	nodes = tmp;

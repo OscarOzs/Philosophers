@@ -6,14 +6,14 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:25:43 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/01/22 17:59:26 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/12 14:25:10 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
 
-typedef int t_bool;
+typedef int	t_bool;
 
 # define ERROR -1
 # define SUCCESS 0

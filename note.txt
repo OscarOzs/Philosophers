@@ -11,3 +11,6 @@ Note :
 - proteger le retour de ses pthread fonctions
 - mettre .c dans makefile
 - supprimer cette note du repo
+ 4 310 200 100
+
+finir function philo_dies_while_eating
