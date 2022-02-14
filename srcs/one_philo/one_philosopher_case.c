@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:20:17 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/01 15:04:24 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:02:44 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	one_philosopher_case(int time_to_die)
 {
-	printf("0 1 has taken a fork\n");
+	printf("\033[0;33m0 1 has taken a fork\n");
 	usleep(time_to_die * 1000);
-	printf("%d 1 died\n", time_to_die);
+	printf("\033[0;31m0 1 has died\n");
 }

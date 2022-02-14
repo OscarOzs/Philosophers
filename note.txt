@@ -14,3 +14,10 @@ Note :
  4 310 200 100
 
 finir function philo_dies_while_eating
+
+philo 1 et 2 mange
+usleep(time to eat)
+philo 1 et 2 sleep
+philo 2 et 3 mange
+usleep(time to die)
+philo 2 ou 3 dies

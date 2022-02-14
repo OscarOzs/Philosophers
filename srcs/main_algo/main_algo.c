@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:41:31 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/13 20:47:39 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/14 14:22:30 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@ static void	eating_function(t_philo *philo)
 
 	current_time = get_time(philo->data->old_time);
 	philo->last_time_eat = get_time(philo->data->old_time);
-	// if (philo->data->time_to_eat
-	// 	>= (philo->data->time_to_die - philo->data->time_to_eat))
-	philo_dies_while_eating(philo);
-	// else
-	// {
+	if ((philo->data->time_to_eat >= philo->data->time_to_die)
+		|| (philo->data->time_to_eat >= (philo->data->time_to_die
+				- philo->data->time_to_eat)))
+		philo_dies_while_eating(philo);
+	else
+	{
 		if (philo->data->one_philo_died == FALSE)
 			print_philo_eating(philo, current_time);
 		philo->has_eaten = 1;
 		if (philo->data->max_eat != -1)
 			philo->nbr_eat++;
 		my_usleep(philo->data->time_to_eat, current_time, philo);
-	// }
+	}
 }
 
 static void	sleep_and_think_function(t_philo *philo)
