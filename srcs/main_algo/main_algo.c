@@ -6,57 +6,38 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 19:41:31 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/14 16:21:49 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/16 20:21:57 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-static void	eating_function(t_philo *philo)
-{
-	long	current_time;
+/////// FAIRE PHILO HAS NO TIME TO EAT ./philo 4 350 200 100
 
-	current_time = get_time(philo->data->old_time);
-	philo->last_time_eat = get_time(philo->data->old_time);
-	if ((philo->data->time_to_eat >= philo->data->time_to_die)
-		|| (philo->data->time_to_eat >= (philo->data->time_to_die
-				- philo->data->time_to_eat) && philo->data->nbr_of_philo >= 4))
-		philo_dies_while_eating(philo);
-	else
+static void	eat_function(t_philo *philo)
+{
+	if (philo->data->one_philo_died == FALSE)
 	{
-		if (philo->data->one_philo_died == FALSE)
-			print_philo_eating(philo, current_time);
-		philo->has_eaten = 1;
+		if (philo->data->die_while_eating == TRUE)
+			philo_has_no_time_to_eat(philo, get_time(philo->data->old_time));
+		check_if_philo_dies(philo, get_time(philo->data->old_time));
+		print_philo_eating(philo, get_time(philo->data->old_time));
+		my_usleep(philo->data->time_to_eat, get_time(philo->data->old_time),
+		philo);
 		if (philo->data->max_eat != -1)
 			philo->nbr_eat++;
-		my_usleep(philo->data->time_to_eat, current_time, philo);
+		philo->has_eaten = TRUE;
 	}
 }
 
 static void	sleep_and_think_function(t_philo *philo)
 {
-	long	current_time;
-
-	if (philo->has_eaten == TRUE && philo->data->one_philo_died == FALSE)
+	if (philo->data->one_philo_died == FALSE)
 	{
-		current_time = get_time(philo->data->old_time);
-		if ((philo->data->time_to_eat + philo->data->time_to_sleep)
-			>= philo->data->time_to_die && philo->data->one_philo_died == FALSE)
-		{
-			philo->data->one_philo_died = TRUE;
-			philo_dies_while_sleeping(philo);
-		}
-		else
-		{
-			philo->last_time_sleep = get_time(philo->data->old_time);
-			my_usleep(philo->data->time_to_sleep, current_time, philo);
-			current_time = get_time(philo->data->old_time);
-			if (philo->data->one_philo_died == FALSE)
-				print_philo_sleeping(philo, current_time);
-			current_time = get_time(philo->data->old_time);
-			if (philo->data->one_philo_died == FALSE)
-				print_philo_thinking(philo, current_time);
-		}
+		print_philo_sleeping(philo, get_time(philo->data->old_time));
+		my_usleep(philo->data->time_to_sleep, get_time(philo->data->old_time),
+		philo);
+		print_philo_thinking(philo, get_time(philo->data->old_time));
 	}
 }
 
@@ -65,18 +46,19 @@ static void	*routine(void *node)
 	t_philo	*philo;
 
 	philo = (t_philo *)node;
-	while (is_philo_dead(philo) == FALSE && max_eat_reached(philo) == FALSE
-		&& philo->data->one_philo_died == FALSE)
+	
+	while (philo->data->one_philo_died == FALSE && max_eat_reached(philo) == FALSE)
 	{
-		if (philo->data->one_philo_died == TRUE)
-			break ;
 		pthread_mutex_lock(&philo->fork);
 		pthread_mutex_lock(&philo->next->fork);
-		eating_function(philo);
-		pthread_mutex_unlock(&philo->fork);
+		eat_function(philo);
 		pthread_mutex_unlock(&philo->next->fork);
-		if (max_eat_reached(philo) == FALSE)
+		pthread_mutex_unlock(&philo->fork);
+		if (max_eat_reached(philo) == FALSE && philo->has_eaten == TRUE)
+		{
 			sleep_and_think_function(philo);
+		}
+		
 	}
 	return (node);
 }

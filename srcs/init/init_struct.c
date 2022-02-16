@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/13 16:30:27 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/16 20:15:51 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static t_data	*init_data(int ac, char **av, t_data *data)
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
-	data->current_time = 0;
 	data->one_philo_died = FALSE;
+	data->die_while_eating = FALSE;
 	if (ac == 6)
 		data->max_eat = ft_atoi(av[5]);
 	else
@@ -35,7 +35,7 @@ t_philo	*init_cll(int nbr_of_philo, t_philo *cll)
 {
 	t_philo	*first_node;
 
-	cll = (t_philo *)malloc(sizeof(t_philo) * 1);
+	cll = (t_philo *)malloc(sizeof(t_philo));
 	if (cll == NULL)
 		return (NULL);
 	first_node = cll;
@@ -62,11 +62,9 @@ static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
 		pthread_mutex_init(&nodes->fork, NULL);
 		nodes->has_eaten = 0;
 		nodes->nbr_eat = 0;
-		nodes->last_time_eat = 0;
 		nodes->data = data;
 		last_node = nodes;
 		nodes = nodes->next;
-		nodes->previous = last_node;
 		i++;
 	}
 	nodes = tmp;
@@ -82,5 +80,6 @@ t_core	*init_struct(int ac, char **av, t_core *core)
 		return (NULL);
 	init_nodes(ft_atoi(av[1]), core->cll, core->data);
 	pthread_mutex_init(&core->data->print_mutex, NULL);
+	pthread_mutex_init(&core->data->philo_dead_mutex, NULL);
 	return (core);
 }

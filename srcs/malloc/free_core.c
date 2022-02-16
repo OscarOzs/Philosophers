@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:53:28 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/13 16:30:31 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:12:37 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_core(t_core *core)
 		i++;
 	}
 	pthread_mutex_destroy(&core->data->print_mutex);
+	pthread_mutex_destroy(&core->data->philo_dead_mutex);
 	free(core->data);
 	free(core);
 }

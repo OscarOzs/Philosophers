@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:30:31 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/10 02:55:45 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:17:04 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 void	print_philo_eating(t_philo *philo, long current_time)
 {
 	pthread_mutex_lock(&philo->data->print_mutex);
-	printf("\033[0;33m%ld %d has taken a fork\n", current_time, philo->id);
-	printf("\033[0;33m%ld %d has taken a fork\n", current_time, philo->id);
-	printf("\033[0;32m%ld %d is eating\n", current_time, philo->id);
+	pthread_mutex_lock(&philo->data->philo_dead_mutex);
+	if (philo->data->one_philo_died == FALSE)
+	{
+		printf("\033[0;33m%ld %d has taken a fork\n", current_time, philo->id);
+		printf("\033[0;33m%ld %d has taken a fork\n", current_time, philo->id);
+		printf("\033[0;32m%ld %d is eating\n", current_time, philo->id);
+	}
+	pthread_mutex_unlock(&philo->data->philo_dead_mutex);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
