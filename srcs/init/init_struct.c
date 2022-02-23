@@ -6,13 +6,13 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:07:06 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/16 20:15:51 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/23 03:14:11 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-static t_data	*init_data(int ac, char **av, t_data *data)
+static t_data	*init_data(char **av, t_data *data, int ac)
 {
 	data = malloc_data(data);
 	if (data == NULL)
@@ -21,13 +21,12 @@ static t_data	*init_data(int ac, char **av, t_data *data)
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
-	data->one_philo_died = FALSE;
-	data->die_while_eating = FALSE;
+	data->create_time = get_time(0);
+	data->philo_died = FALSE;
 	if (ac == 6)
-		data->max_eat = ft_atoi(av[5]);
+		data->meals_to_be_full = ft_atoi(av[5]);
 	else
-		data->max_eat = -1;
-	gettimeofday(&data->old_time, NULL);
+		data->meals_to_be_full = -1;
 	return (data);
 }
 
@@ -52,18 +51,19 @@ static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
 {
 	int		i;
 	t_philo	*tmp;
-	t_philo	*last_node;
 
 	i = 0;
 	tmp = nodes;
 	while (i < nbr_of_philo)
 	{
 		nodes->id = i + 1;
-		pthread_mutex_init(&nodes->fork, NULL);
-		nodes->has_eaten = 0;
+		pthread_mutex_init(&nodes->forks_mutex, NULL);
+		pthread_mutex_init(&nodes->time_mutex, NULL);
+		pthread_mutex_init(&nodes->meals, NULL);
 		nodes->nbr_eat = 0;
+		nodes->forks = 0;
 		nodes->data = data;
-		last_node = nodes;
+		nodes->time = get_time(0);
 		nodes = nodes->next;
 		i++;
 	}
@@ -72,14 +72,16 @@ static void	init_nodes(int nbr_of_philo, t_philo *nodes, t_data *data)
 
 t_core	*init_struct(int ac, char **av, t_core *core)
 {
-	core->data = init_data(ac, av, core->data);
+	core->data = init_data(av, core->data, ac);
 	if (core->data == NULL)
 		return (NULL);
 	core->cll = init_cll(core->data->nbr_of_philo, core->cll);
 	if (core->cll == NULL)
 		return (NULL);
 	init_nodes(ft_atoi(av[1]), core->cll, core->data);
+	pthread_mutex_init(&core->data->init, NULL);
+	pthread_mutex_init(&core->data->death, NULL);
+	pthread_mutex_init(&core->data->meals, NULL);
 	pthread_mutex_init(&core->data->print_mutex, NULL);
-	pthread_mutex_init(&core->data->philo_dead_mutex, NULL);
 	return (core);
 }

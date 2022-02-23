@@ -6,7 +6,7 @@
 #    By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/02 17:36:35 by oozsertt          #+#    #+#              #
-#    Updated: 2022/02/16 17:31:12 by oozsertt         ###   ########.fr        #
+#    Updated: 2022/02/23 19:34:25 by oozsertt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,15 @@ BUILD = .build
 
 vpath %.c $(foreach dir, $(SRCS_PATH), $(dir):)
 
-SRCS = 	$(foreach dir, $(SRCS_PATH), $(foreach file, $(wildcard $(dir)/*.c), $(notdir $(file))))
+SRCS = 	philo.c \
+		args_are_valid.c \
+		init_struct.c \
+		one_philosopher_case.c \
+		death_routine.c eat_function.c is_philo_dead.c max_eat_reached.c \
+		routine.c sleep_function.c think_function.c \
+		free_core.c malloc_core.c malloc_data.c malloc_nodes.c \
+		print_philo_eating.c print_philo_sleeping.c print_philo_thinking.c \
+		ft_atoi.c ft_atol.c ft_isdigit.c get_time.c my_usleep.c \
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 

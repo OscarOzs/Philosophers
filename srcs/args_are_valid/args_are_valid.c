@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:28:20 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/01 15:00:04 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/19 03:54:10 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@ t_bool	args_are_int_range(int ac, char **av)
 	return (TRUE);
 }
 
+t_bool	check_minimum_ms(char **av)
+{
+	if (ft_atoi(av[2]) < 60)
+		return (FALSE);
+	if (ft_atoi(av[3]) < 60)
+		return (FALSE);
+	if (ft_atoi(av[4]) < 60)
+		return (FALSE);
+	return (TRUE);
+}
+
 t_bool	args_are_valid(int ac, char **av)
 {
 	if (ac != 5 && ac != 6)
@@ -57,9 +68,15 @@ t_bool	args_are_valid(int ac, char **av)
 		return (FALSE);
 	if (args_are_int_range(ac, av) == FALSE)
 		return (FALSE);
+	if (ft_atoi(av[1]) > 200)
+		return (FALSE);
+	if (check_minimum_ms(av) == FALSE)
+		return (FALSE);
+	if (ft_atoi(av[1]) == 0)
+		return (FALSE);
 	if (ac == 6)
 	{
-		if (av[5][0] == '0')
+		if (ft_atoi(av[5]) == 0)
 			return (FALSE);
 	}
 	return (TRUE);

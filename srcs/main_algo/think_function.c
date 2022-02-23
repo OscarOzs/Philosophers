@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_functions.h                                  :+:      :+:    :+:   */
+/*   think_function.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 16:32:45 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/23 18:48:57 by oozsertt         ###   ########.fr       */
+/*   Created: 2022/02/22 05:30:11 by oozsertt          #+#    #+#             */
+/*   Updated: 2022/02/23 07:03:58 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_FUNCTIONS_H
-# define PRINT_FUNCTIONS_H
+#include "philosopher.h"
 
-void	print_philo_eating(t_philo *philo);
-void	print_philo_sleeping(t_philo *philo);
-void	print_philo_thinking(t_philo *philo);
+void	think_function(t_philo *philo)
+{
+	long	current_time;
 
-#endif
+	current_time = get_time(philo->data->create_time);
+	if (is_philo_dead(philo) == FALSE)
+		print_philo_thinking(philo);
+}

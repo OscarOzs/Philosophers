@@ -6,7 +6,7 @@
 /*   By: oozsertt <oozsertt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 16:22:24 by oozsertt          #+#    #+#             */
-/*   Updated: 2022/02/16 20:15:34 by oozsertt         ###   ########.fr       */
+/*   Updated: 2022/02/23 01:32:54 by oozsertt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ typedef struct s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				max_eat;
-	t_bool			one_philo_died;
-	t_bool			die_while_eating;
+	long			create_time;
+	int				meals_to_be_full;
+	pthread_mutex_t	meals;
+	t_bool			philo_died;
+	pthread_mutex_t	death;
+	pthread_mutex_t	init;
 	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	philo_dead_mutex;
-	struct timeval	old_time;
 }				t_data;
 
 #endif
